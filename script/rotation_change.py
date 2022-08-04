@@ -22,4 +22,7 @@ temperature, u_wind, v_wind, rel_hum, spec_hum = get_variable(aqua_planet_rotati
 rad_var = ['traf0','trad0']
 olr_clr, olr = get_variable(aqua_planet_rotation_1x,rad_var)
 
+#%%
+tropo_RH = tropo_RH(rel_hum,press)
 
+# %%
