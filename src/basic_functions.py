@@ -93,7 +93,7 @@ def zonal_line_plot(x, var, label, color, unit, title):
         ax.set_title(title, fontsize='16')
         plt.legend(fontsize=12)
     
-#%%
+    
 def linregress_corrcoeff(x,y):
 
     " Caluclates the Pearson correlation coefficient from line regression"
