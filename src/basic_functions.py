@@ -3,6 +3,7 @@ import xarray as xr
 from itertools import islice
 import matplotlib.pyplot as plt
 from matplotlib.ticker import EngFormatter
+from scipy.stats import linregress
 
 
 def get_dimension(data):
@@ -92,4 +93,24 @@ def zonal_line_plot(x, var, label, color, unit, title):
         ax.set_title(title, fontsize='16')
         plt.legend(fontsize=12)
     
+#%%
+def linregress_corrcoeff(x,y):
 
+    " Caluclates the Pearson correlation coefficient from line regression"
+
+    " Returns an array of correlation coefficient values that corresponds to zonal values"
+
+    " Parameter:"
+    " x : 2D array of values time x lat"
+    " y : same as x"
+
+    if len(np.shape(x)) == 3:
+        x = np.mean(x,axis=2)
+        y = np.mean(y,axis=2)
+
+    corrcoeff = np.empty(np.shape(x)[1],dtype=float)
+
+    for i in range(np.shape(x)[1]):
+        a,b,corrcoeff[i],d,e = linregress(x,y)
+        
+    return corrcoeff

@@ -86,6 +86,11 @@ tropo_rh_05x = tropo_RH(rel_hum_avg_05x,press)
 zonal_rh_05x = np.mean(tropo_rh_05x,axis=1)
 
 #%%
+# Corrcoeff 0.5x b/w Tropospheric RH and clear sky OLR
+tropo_rh_full_05x = tropo_RH(rel_hum_05x,press)
+corrcoeff_trh_olrclr_05x = linregress_corrcoeff(tropo_rh_full_05x,olr_clr_05x)
+
+#%%
 # Plot Tropospheric Relative humidity 
 label = ['0.5\u03A9', '    \u03A9', '  2\u03A9', '  4\u03A9']
 color = ['tomato','darkgray','cornflowerblue','darkblue']
@@ -94,4 +99,5 @@ tropo_relhum = np.empty((4,len(lat)),dtype = float)
 tropo_relhum[0] = zonal_rh_05x; tropo_relhum[1] = zonal_rh_1x; 
 tropo_relhum[2] = zonal_rh_2x; tropo_relhum[3] = zonal_rh_4x; 
 plot_zonal_rh = zonal_line_plot(lat, tropo_relhum, label, color, 'RH', 'Tropospheric Relative Humidity')
-# %%
+
+#%% 
